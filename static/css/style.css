@@ -1,0 +1,139 @@
+/* Reset default styles */
+body, h1, h4, form, table, th, td, input, select, option {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+select.placeholder {
+  color: #888;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+
+
+h1 {
+  font-size:x-large;
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgb(33, 145, 153);
+}
+
+h4 {
+  font-size:larger;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #220907;
+}
+
+form {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+input[type="radio"], input[type="number"], select {
+  margin-right: 5px;
+}
+
+input[type="submit"], input[type="reset"] {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="reset"] {
+  background-color: #f44336;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+input[type="reset"]:hover {
+  background-color: #a82e2e;
+}
+
+td[colspan="3"] {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+#output {
+  font-weight:bolder;
+  text-align: center;
+  padding: 10px;
+  background-color: #244d26;
+  color: #fff;
+  border-radius: 5px;
+}
+
+
+.placeholder {
+  color: #888;
+}
+

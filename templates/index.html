@@ -1,0 +1,161 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    </head>
+    <body>
+        <div class="container">
+        <h1>Customer Churn Prediction</h1>
+        <h4>Fill the form for churn prediction</h4>
+        <form action="{{url_for('predict_class')}}" method="post">
+            <table>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input id="prediction" type="radio" name="gender" value="Male" required {% if gender == 'Male' %}checked{% endif %}>Male
+                    </td>
+                    <td>
+                        <input id="prediction.no" type="radio" name="gender" value="Female" required {% if gender == 'Female' %}checked{% endif %}>Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Senior Citizen</td>
+                    <td>
+                        <input id="prediction.no" type="radio" name="citizen" value="0" required {% if citizen == '0' %}checked{% endif %}>No
+                    </td>
+                    <td>
+                        <input id="prediction" type="radio" name="citizen" value="1" required {% if citizen == '1' %}checked{% endif %}>Yes
+                    </td>
+                </tr>
+                <tr>
+                    <td>Partner</td>
+                    <td>
+                          <input id="prediction" type="radio" name="partner" value="Yes" {% if partner == 'Yes' %}checked{% endif %}>Yes
+                    </td>
+                    <td>
+                        <input id="prediction.no" type="radio" name="partner" value="No" {% if partner == 'No' %}checked{% endif %}>No
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dependents</td>
+                    <td>
+                        <input id="prediction" type="Radio" name="dependents" value="Yes" required {% if dependents == 'Yes' %}checked{% endif %}>Yes
+                    </td>
+                    <td>
+                        <input id="prediction.no" type="Radio" name="dependents" value="No" required {% if dependents == 'No' %}checked{% endif %}>No
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tenure</td>
+                    <td><input type="number" name="tenure" placeholder="Enter tenure" required value="{{ form_data.get('tenure', '') }}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Phone Service</td>
+                    <td><input id="prediction.no" type="radio" name="phoneservice" value="No" required required {% if phoneservice == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="phoneservice" value="Yes" required required {% if phoneservice == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Multiple Lines</td>
+                    <td><input id="prediction.no" type="radio" name="multiplelines" value="No" required required {% if multiplelines == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="multiplelines" value="Yes" required required {% if multiplelines == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Internet Service</td>
+                    <td>
+                        <select name="internetservice">
+                            <option class="placeholder">Select internet Service</option>
+                            <option value="No" {% if internetservice == 'No' %}selected{% endif %}>No</option>
+                            <option value="DSL" {% if internetservice == 'DSL' %}selected{% endif %}>DSL</option>
+                            <option value="Fiber optic" {% if internetservice == 'Fiber optic' %}selected{% endif %}>Fiber optic</option>
+                        </select>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Online Security</td>
+                    <td><input id="prediction.no" type="radio" name="onlinesecurity" value="No" required required {% if onlinesecurity == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="onlinesecurity" value="Yes" required required {% if onlinesecurity == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Online Backup</td>
+                    <td><input id="prediction.no" type="radio" name="onlinebackup" value="No" required required {% if onlinebackup == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="onlinebackup" value="Yes" required required {% if onlinebackup == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Device Protection</td>
+                    <td><input id="prediction.no" type="radio" name="deviceprotection" value="No" required required {% if deviceprotection == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="deviceprotection" value="Yes" required required {% if deviceprotection == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Tech Support</td>
+                    <td><input id="prediction.no" type="radio" name="techsupport" value="No" required required {% if techsupport == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="techsupport" value="Yes" required required {% if techsupport == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Streaming TV </td>
+                    <td><input id="prediction" type="radio" name="streamingtv" value="No" required required {% if streamingtv == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction.no" type="radio" name="streamingtv" value="Yes" required required {% if streamingtv == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Streaming Movies </td>
+                    <td><input id="prediction.no" type="radio" name="streamingmovies" value="No" required required {% if streamingmovies == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="streamingmovies" value="Yes" required required {% if streamingmovies == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Contract</td>
+                    <td>
+                    <select name="contract">
+                        <option class="placeholder">Select contract type</option>
+                        <option value="Month-to-month" {% if contract == 'Month-to-month' %}selected{% endif %}>Month-to-month</option>
+                        <option value="One year" {% if contract == 'One year' %}selected{% endif %}>One Year</option>
+                        <option value="Two year" {% if contract == 'Two year' %}selected{% endif %}>Two Year</option>
+                    </select>
+                    </td>
+                   <td></td> 
+                </tr>
+                <tr>
+                    <td>Paperless Billing </td>
+                    <td><input id="prediction.no" type="radio" name="paperless" value="No" required required {% if paperless == 'No' %}checked{% endif %}>No</td>
+                    <td><input id="prediction" type="radio" name="paperless" value="Yes" required required {% if paperless == 'Yes' %}checked{% endif %}>Yes</td>
+                </tr>
+                <tr>
+                    <td>Payment Method</td>
+                    <td>
+                    <select name="paymentmethod">
+                        <option class="placeholder" >Select Payment method</option>
+                        <option value="Electronic check" {% if paymentmethod == 'Electronic check' %}selected{% endif %}>Electronic check</option>
+                        <option value="Mailed check" {% if paymentmethod == 'Mailed check' %}selected{% endif %}>Mailed check</option>
+                        <option value="Bank transfer (automatic)" {% if paymentmethod == 'Bank transfer (automatic)' %}selected{% endif %}>Bank transfer (automatic)</option>
+                        <option value="Credit card (automatic)" {% if paymentmethod == 'Credit card (automatic)' %}selected{% endif %}>Credit card (automatic)</option>
+                    </select>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Monthly Charges</td>
+                    <td><input type="number" name="monthly" step="0.01" required placeholder="Enter monthly charges" value="{{ form_data.get('monthly', '') }}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Total Charges</td>
+                    <td><input type="number" name="total" step="0.01" required placeholder="Enter Total charges" value="{{ form_data.get('total', '') }}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <input type="submit" value="submit">   <input type="reset" value="reset ">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="output" colspan="3">{{output}}</td>
+                </tr>
+            </table>
+        </form>
+        </div>
+    </body>
+</html>
